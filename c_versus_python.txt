@@ -1,0 +1,9 @@
+while compiling factorial using only c time was so short that output was 0.000000000000. 
+
+But in other case these were finite. 
+
+This implies that using only c is fast . . . .
+
+Another case is that using scipy function python can calculate factorial of very big integers, but using c program factorial of large numbers could not be possible even if using long int data type . . . .
+
+
