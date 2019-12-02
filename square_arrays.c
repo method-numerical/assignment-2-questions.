@@ -3,6 +3,8 @@
 
 float *mean_variance(int *p, int size);     /*take an array,return an array of mean and variance.*/
 
+struct data {float mean, variance;};        /* declare the structure of outputs to write to bin file.*/
+
 int main()                    
 { 
   int *y;
@@ -14,10 +16,15 @@ int main()
   float *q;  				    /* q is an array of mean and  variance of any array.*/
   q=mean_variance(y,100);
   
+  struct data values;			    /* it refer the structure as "values".*/
+
   FILE *fp;
-  fp=fopen("result.txt","w");
-  fprintf(fp,"mean = %f\t variance = %f.",q[0],q[1]);
-  
+  values.mean=q[0];
+  values.variance=q[1];
+  fp=fopen("result.bin","wb");
+  fwrite(&values,sizeof(struct data),1,fp);
+
+
   free(y);
   free(q);
  
